@@ -36,6 +36,7 @@ app.use(
 app.use("/api/register", require("./routes/register"));
 app.use("/api/login", require("./routes/login"));
 app.use("/api/getlocals", require("./routes/getLocals"));
+app.use("/api/availability", require("./routes/availability"));
 app.use("/api/newAppointment", require("./routes/newAppointment"));
 
 app.listen(3000, () => {
