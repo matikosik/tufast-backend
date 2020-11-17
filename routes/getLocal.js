@@ -4,9 +4,9 @@ const router = express.Router();
 const locals = require("../models/locals");
 
 router.post("/", async (req, res) => {
-  const allLocals = await locals.find();
+  const local = await locals.findById(req.body.idLocal);
 
-  res.send(allLocals);
+  res.send(local);
 });
 
 module.exports = router;

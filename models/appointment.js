@@ -10,7 +10,7 @@ const appointmentsSchema = new mongoose.Schema({
   status: {
     type: String,
   },
-  fecha: {
+  date: {
     type: Date,
   }
 });

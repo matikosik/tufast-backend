@@ -25,12 +25,12 @@ router.post("/", async (req, res) => {
       else {
         var tokenData = {
           user: local._id,
+          local: true
         };
         var token = jwt.sign(tokenData, process.env.jwtKey, {
           expiresIn: 60 * 60 * 128, // expires in 128 hours
         });
-        res.setHeader("token", token);
-        res.setHeader("local", true);
+        res.json({"token": token, "local": true});
         res.send();
       }
     }
@@ -43,12 +43,12 @@ router.post("/", async (req, res) => {
     else {
       var tokenData = {
         user: user._id,
+        local: false
       };
       var token = jwt.sign(tokenData, process.env.jwtKey, {
         expiresIn: 60 * 60 * 128, // expires in 128 hours
       });
-      res.setHeader("token", token);
-      res.setHeader("local", false);
+      res.json({"token": token, "local": false});
       res.send();
     }
   }
