@@ -8,6 +8,7 @@ const users = require("../models/users");
 const appointment = require("../models/appointment");
 
 router.post("/", async (req, res) => {
+  console.log(req)
   const decoded = jwt.decode(req.headers.token);
 
   dateToAppoinment = new Date(
