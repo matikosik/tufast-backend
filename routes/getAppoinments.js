@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
       const userInfo = await users.findById(appointments[i].idUser).lean();
       json.appointmentInfo = appointments[i]
       json.userInfo = userInfo;
-      arr.append(json)      
+      arr.push(json)      
     }
     res.send(arr);
   } else if (decoded.local == false) {
