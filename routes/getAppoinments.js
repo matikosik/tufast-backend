@@ -20,8 +20,9 @@ router.post("/", async (req, res) => {
       const userInfo = await users.findById(appointments[i].idUser).lean();
       var userInf = JSON.stringify(userInfo);
       const json = turno + userInf;
-      const respuesta = JSON.parse(json);
-      appointments[i] = respuesta;
+      console.log(typeof json)
+      // const respuesta = JSON.parse(json);
+      // appointments[i] = respuesta;
     }
     return res.send(appointments);
   } else if (decoded.local == false) {
