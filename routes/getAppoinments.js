@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
     const appointments = await appointment
       .find({
         idLocal: decoded.user,
-      }, {_id: 0})
+      })
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {}
