@@ -12,16 +12,12 @@ router.post("/", async (req, res) => {
   if (decoded.local == true) {
     const appointments = await appointment.find({
       idLocal: decoded.user,
-    });
-    var arr = []
+    }).lean();
     for (var i = 0; i < appointments.length; i++) {
-      var json = {}
-      const userInfo = await users.findById(appointments[i].idUser).lean();
-      json.appointmentInfo = appointments[i]
-      json.userInfo = userInfo;
-      arr.push(json)      
+      const userInfo = await users.findById(appointments[i].idUser).lean();  
+      appointments[i].push(userInfo)    
     }
-    res.send(arr);
+    res.send(appointments);
   } else if (decoded.local == false) {
     const appointments = await appointment.find({
       idUser: decoded.user,
