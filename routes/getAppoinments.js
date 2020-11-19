@@ -16,13 +16,11 @@ router.post("/", async (req, res) => {
       }, {_id: 0})
       .lean();
     for (var i = 0; i < appointments.length; i++) {
-      var turno = JSON.stringify(appointments[i]);
+      var json = {}
       const userInfo = await users.findById(appointments[i].idUser, {_id: 0, __v: 0}).lean();
-      var userInf = JSON.stringify(userInfo);
-      const json = turno + userInf;
-      console.log(json)
-      // const respuesta = JSON.parse(json);
-      // appointments[i] = respuesta;
+      for(key in userInfo){
+        console.log(key)
+      }
     }
     return res.send(appointments);
   } else if (decoded.local == false) {
