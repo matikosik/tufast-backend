@@ -10,6 +10,7 @@ router.post("/", async (req, res) => {
   const decoded = jwt.decode(req.headers.token);
 
   if (decoded.local == true) {
+    var resultado = []
     const appointments = await appointment
       .find({
         idLocal: decoded.user,
@@ -24,8 +25,9 @@ router.post("/", async (req, res) => {
       for(key in appointments[i]){
         json[key] = userInfo[key]
       }
+      resultado.push(json)
     }
-    return res.send(appointments);
+    return res.send(resultado);
   } else if (decoded.local == false) {
     const appointments = await appointment.find({
       idUser: decoded.user,
