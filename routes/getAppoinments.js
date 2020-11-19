@@ -13,11 +13,11 @@ router.post("/", async (req, res) => {
     const appointments = await appointment
       .find({
         idLocal: decoded.user,
-      })
+      }, {_id: 0})
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var turno = JSON.stringify(appointments[i]);
-      const userInfo = await users.findById(appointments[i].idUser).lean();
+      const userInfo = await users.findById(appointments[i].idUser, {_id: 0, __v: 0}).lean();
       var userInf = JSON.stringify(userInfo);
       const json = turno + userInf;
       console.log(json)
