@@ -19,7 +19,10 @@ router.post("/", async (req, res) => {
       var json = {}
       const userInfo = await users.findById(appointments[i].idUser, {_id: 0, __v: 0}).lean();
       for(key in userInfo){
-        console.log(key)
+        json[key] = userInfo[key]
+      }
+      for(key in appointments[i]){
+        json[key] = userInfo[key]
       }
     }
     return res.send(appointments);
