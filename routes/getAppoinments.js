@@ -10,23 +10,25 @@ router.post("/", async (req, res) => {
   const decoded = jwt.decode(req.headers.token);
 
   if (decoded.local == true) {
-    const appointments = await appointment.find({
-      idLocal: decoded.user,
-    }).lean();
+    const appointments = await appointment
+      .find({
+        idLocal: decoded.user,
+      })
+      .lean();
     for (var i = 0; i < appointments.length; i++) {
-      var turno = JSON.stringify(appointments[i])
-      const userInfo = await users.findById(appointments[i].idUser).lean();  
-      var userInf = JSON.stringify(userInfo)
-      const json = turno + userInf
-      const respuesta = JSON.parse(json)     
-      appointments[i] = respuesta 
+      var turno = JSON.stringify(appointments[i]);
+      const userInfo = await users.findById(appointments[i].idUser).lean();
+      var userInf = JSON.stringify(userInfo);
+      const json = turno + userInf;
+      const respuesta = JSON.parse(json);
+      appointments[i] = respuesta;
     }
-    res.send(appointments);
+    return res.send(appointments);
   } else if (decoded.local == false) {
     const appointments = await appointment.find({
       idUser: decoded.user,
     });
-    res.send(appointments);
+    return res.send(appointments);
   }
 });
 
