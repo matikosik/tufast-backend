@@ -3,6 +3,7 @@ const router = express.Router();
 var jwt = require("jsonwebtoken");
 
 const appointment = require("../models/appointment");
+const locals = require("../models/locals");
 const users = require("../models/users");
 
 router.post("/", async (req, res) => {
@@ -33,9 +34,9 @@ router.post("/", async (req, res) => {
     }).lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {}
-      const userInfo = await users.findById(appointments[i].idUser, {_id: 0, __v: 0}).lean();
-      for(key in userInfo){
-        json[key] = userInfo[key]
+      const localInfo = await locals.findById(appointments[i].idLocal, {_id: 0, __v: 0}).lean();
+      for(key in localInfo){
+        json[key] = localInfo[key]
       }
       for(key in appointments[i]){
         json[key] = appointments[i][key]
