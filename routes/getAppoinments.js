@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
         json[key] = userInfo[key]
       }
       for(key in appointments[i]){
-        json[key] = userInfo[key]
+        json[key] = appointments[i][key]
       }
       resultado.push(json)
     }
