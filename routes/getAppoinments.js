@@ -13,11 +13,15 @@ router.post("/", async (req, res) => {
     const appointments = await appointment.find({
       idLocal: decoded.user,
     });
+    var arr = []
     for (var i = 0; i < appointments.length; i++) {
+      var json = {}
       const userInfo = await users.findById(appointments[i].idUser).lean();
-      appointments.userInfo = userInfo;
+      json.appointmentInfo = appointments[i]
+      json.userInfo = userInfo;
+      arr.append(json)      
     }
-    res.send(appointments);
+    res.send(arr);
   } else if (decoded.local == false) {
     const appointments = await appointment.find({
       idUser: decoded.user,
