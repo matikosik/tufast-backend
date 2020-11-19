@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
       const userInfo = await users.findById(appointments[i].idUser).lean();
       var userInf = JSON.stringify(userInfo);
       const json = turno + userInf;
-      console.log(typeof json)
+      console.log(json)
       // const respuesta = JSON.parse(json);
       // appointments[i] = respuesta;
     }
