@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       idLocal: decoded.user,
     });
     for (var i = 0; i < appointments.length; i++) {
-      const userInfo = await users.findById(appointments[i].idUser);
+      const userInfo = await users.findById(appointments[i].idUser).lean();
       appointments.userInfo = userInfo;
     }
     res.send(appointments);
