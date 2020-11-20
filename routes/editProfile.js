@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
   const decoded = jwt.decode(req.headers.token);
-  if (decoded.local == false) {
+  if (decoded.local === false) {
     const user = await users.findById(decoded.user);
     for (key in req.body) {
       if (req.body[key] === null) {
@@ -16,8 +16,9 @@ router.post("/", async (req, res) => {
       }
     }
     await users.findByIdAndUpdate(decoded.user);
+    res.send("OK")
   }
-  if (decoded.local == true) {
+  if (decoded.local === true) {
     const local = await locals.findById(decoded.user);
     for (key in req.body) {
       if (req.body[key] === null) {
@@ -25,6 +26,7 @@ router.post("/", async (req, res) => {
       }
     }
     await users.findByIdAndUpdate();
+    res.send("OK")
   }
 });
 
