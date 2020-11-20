@@ -6,8 +6,7 @@ const jwt = require("jsonwebtoken");
 const users = require("../models/users");
 const locals = require("../models/locals");
 
-router.post("/", async (req, res) => {
-  console.log(req.headers.token)
+router.post("/", async (req, res) => { 
   const decoded = jwt.decode(req.headers.token);
   if (decoded.local === false) {
     const user = await users.findById(decoded.user);
