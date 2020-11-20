@@ -40,6 +40,7 @@ router.post("/confirmed", async (req, res) => {
       .find(
         {
           idUser: decoded.user,
+          status:"confirmed"
         },
         { status: 0 }
       )
@@ -94,6 +95,7 @@ router.post("/pending", async (req, res) => {
       .find(
         {
           idUser: decoded.user,
+          status: "pending",
         },
         { status: 0 }
       )
@@ -148,6 +150,7 @@ router.post("/old", async (req, res) => {
       .find(
         {
           idUser: decoded.user,
+          status: "old",
         },
         { status: 0 }
       )
