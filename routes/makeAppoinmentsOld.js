@@ -16,8 +16,6 @@ async function makeOld() {
           );
       }
   }
-  res.send("OK")
-
 }
 
 module.exports = { makeOld };
