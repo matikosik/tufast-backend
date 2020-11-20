@@ -21,8 +21,6 @@ router.post("/", async (req, res) => {
           },
         }
       );
-
-  res.send("appointment updated successfully");
 });
 
 module.exports = router;

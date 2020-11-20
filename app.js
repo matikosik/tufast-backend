@@ -42,17 +42,18 @@ app.use("/api/newAppointment", require("./routes/newAppointment"));
 app.use("/api/getAppoinments", require("./routes/getAppoinments"));
 app.use("/api/updateAppoinment", require("./routes/updateAppoinment"));
 app.use("/api/modifyAppoinment", require("./routes/modifyAppoinment"));
-app.use("/api/deleteAppointment", require("./routes/deleteAppointment"))
+app.use("/api/deleteAppointment", require("./routes/deleteAppointment"));
+app.use("/api/editprof", require("./routes/editProfile"));
 
 app.listen(3000, () => {
   console.log("Server on port 3000");
 });
 
-const makeOld = require("./routes/makeAppoinmentsOld")
+const makeOld = require("./routes/makeAppoinmentsOld");
 
-setInterval(function() {
+setInterval(function () {
   var date = new Date();
-  if ( date.getSeconds() === 0 ) {
-    makeOld.makeOld()
+  if (date.getSeconds() === 0) {
+    makeOld.makeOld();
   }
 }, 1000);

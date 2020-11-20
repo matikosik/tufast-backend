@@ -16,6 +16,7 @@ async function makeOld() {
           );
       }
   }
+  res.send("OK")
 
 }
 
