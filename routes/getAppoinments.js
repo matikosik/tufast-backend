@@ -29,6 +29,7 @@ router.post("/", async (req, res) => {
     }
     return res.send(resultado);
   } else if (decoded.local == false) {
+    var resultado = []
     const appointments = await appointment.find({
       idUser: decoded.user,
     }).lean();
