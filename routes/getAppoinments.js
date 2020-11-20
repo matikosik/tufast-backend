@@ -12,10 +12,13 @@ router.post("/confirmed", async (req, res) => {
   if (decoded.local == true) {
     var resultado = [];
     const appointments = await appointment
-      .find({
-        idLocal: decoded.user,
-        status: "confirmed"
-      })
+      .find(
+        {
+          idLocal: decoded.user,
+          status: "confirmed",
+        },
+        { status: 0 }
+      )
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {};
@@ -34,9 +37,12 @@ router.post("/confirmed", async (req, res) => {
   } else if (decoded.local == false) {
     var resultado = [];
     const appointments = await appointment
-      .find({
-        idUser: decoded.user,
-      })
+      .find(
+        {
+          idUser: decoded.user,
+        },
+        { status: 0 }
+      )
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {};
@@ -60,10 +66,13 @@ router.post("/pending", async (req, res) => {
   if (decoded.local == true) {
     var resultado = [];
     const appointments = await appointment
-      .find({
-        idLocal: decoded.user,
-        status: "pending"
-      })
+      .find(
+        {
+          idLocal: decoded.user,
+          status: "pending",
+        },
+        { status: 0 }
+      )
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {};
@@ -82,9 +91,12 @@ router.post("/pending", async (req, res) => {
   } else if (decoded.local == false) {
     var resultado = [];
     const appointments = await appointment
-      .find({
-        idUser: decoded.user,
-      })
+      .find(
+        {
+          idUser: decoded.user,
+        },
+        { status: 0 }
+      )
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {};
@@ -108,10 +120,13 @@ router.post("/old", async (req, res) => {
   if (decoded.local == true) {
     var resultado = [];
     const appointments = await appointment
-      .find({
-        idLocal: decoded.user,
-        status: "old"
-      })
+      .find(
+        {
+          idLocal: decoded.user,
+          status: "old",
+        },
+        { status: 0 }
+      )
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {};
@@ -130,9 +145,12 @@ router.post("/old", async (req, res) => {
   } else if (decoded.local == false) {
     var resultado = [];
     const appointments = await appointment
-      .find({
-        idUser: decoded.user,
-      })
+      .find(
+        {
+          idUser: decoded.user,
+        },
+        { status: 0 }
+      )
       .lean();
     for (var i = 0; i < appointments.length; i++) {
       var json = {};
