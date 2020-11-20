@@ -42,6 +42,7 @@ app.use("/api/newAppointment", require("./routes/newAppointment"));
 app.use("/api/getAppoinments", require("./routes/getAppoinments"));
 app.use("/api/updateAppoinment", require("./routes/updateAppoinment"));
 app.use("/api/modifyAppoinment", require("./routes/modifyAppoinment"));
+app.use("/api/deleteAppointment", require("/routes/deleteAppointment"))
 
 app.listen(3000, () => {
   console.log("Server on port 3000");
