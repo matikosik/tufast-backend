@@ -33,6 +33,7 @@ router.post("/confirmed", async (req, res) => {
       }
       resultado.push(json);
     }
+    console.log(resultado);
     return res.send(resultado);
   } else if (decoded.local == false) {
     var resultado = [];
@@ -40,7 +41,7 @@ router.post("/confirmed", async (req, res) => {
       .find(
         {
           idUser: decoded.user,
-          status:"confirmed"
+          status: "confirmed",
         },
         { status: 0 }
       )
@@ -58,6 +59,7 @@ router.post("/confirmed", async (req, res) => {
       }
       resultado.push(json);
     }
+    console.log(resultado);
     return res.send(resultado);
   }
 });
@@ -88,6 +90,7 @@ router.post("/pending", async (req, res) => {
       }
       resultado.push(json);
     }
+    console.log(resultado);
     return res.send(resultado);
   } else if (decoded.local == false) {
     var resultado = [];
@@ -113,6 +116,7 @@ router.post("/pending", async (req, res) => {
       }
       resultado.push(json);
     }
+    console.log(resultado);
     return res.send(resultado);
   }
 });
@@ -143,6 +147,7 @@ router.post("/old", async (req, res) => {
       }
       resultado.push(json);
     }
+    console.log(resultado);
     return res.send(resultado);
   } else if (decoded.local == false) {
     var resultado = [];
@@ -168,6 +173,7 @@ router.post("/old", async (req, res) => {
       }
       resultado.push(json);
     }
+    console.log(resultado);
     return res.send(resultado);
   }
 });
