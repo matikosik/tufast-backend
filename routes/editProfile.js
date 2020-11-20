@@ -7,7 +7,6 @@ const locals = require("../models/locals");
 const jwt = require("jsonwebtoken");
 
 router.post("/", async (req, res) => {
-  console.log(req.body)
   const decoded = jwt.decode(req.headers.token);
   if (decoded.local === false) {
     const user = await users.findById(decoded.user);
@@ -16,7 +15,7 @@ router.post("/", async (req, res) => {
         req.body[key] = user[key];
       }
     }
-    await users.findByIdAndUpdate(decoded.user);
+    await users.findByIdAndUpdate(decoded.user, req.body);
     res.send("OK")
   }
   if (decoded.local === true) {
@@ -26,7 +25,7 @@ router.post("/", async (req, res) => {
         req.body[key] = local[key];
       }
     }
-    await users.findByIdAndUpdate();
+    await locals.findByIdAndUpdate(decoded.user, req.body);
     res.send("OK")
   }
 });
