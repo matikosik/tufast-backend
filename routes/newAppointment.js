@@ -13,9 +13,9 @@ router.post("/", async (req, res) => {
 
   dateToAppoinment = new Date(
     req.body.year,
-    req.body.month - 1,
+    req.body.month,
     req.body.day,
-    req.body.hour - 3,
+    req.body.hour,
     req.body.minute
   );
 
