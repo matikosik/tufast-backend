@@ -46,6 +46,7 @@ router.post("/", async (req, res) => {
         celular: req.body.celular,
         password: req.body.password,
         horarios: req.body.horarios,
+        foto: req.body.foto,
       });
 
       var tokenData = {

@@ -19,6 +19,9 @@ const localsSchema = new mongoose.Schema({
   horarios: {
     type: Object,
   },
+  foto:{
+    type: String,
+  }
 });
 
 module.exports = mongoose.model("locals", localsSchema);
